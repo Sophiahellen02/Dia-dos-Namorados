@@ -48,7 +48,7 @@
     }
 
     .carrossel {
-       position: relative;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -62,15 +62,20 @@
     }
 
     .carrossel img {
-      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 15px;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
 
     .carrossel img.ativa {
-      display: block;
+      opacity: 1;
+      z-index: 1;
     }
 
     .secret-btn {
@@ -184,7 +189,6 @@
   </div>
 
   <script>
-    // Carrossel de imagens
     function iniciarCarrossel() {
       const imagens = document.querySelectorAll('.carrossel img');
       let indexAtual = 0;
@@ -193,10 +197,9 @@
         imagens[indexAtual].classList.remove('ativa');
         indexAtual = (indexAtual + 1) % imagens.length;
         imagens[indexAtual].classList.add('ativa');
-      }, 5000); // Muda a cada 5 segundos
+      }, 4000); // Muda a cada 5 segundos
     }
 
-    // Senha secreta
     function mostrarCampoSenha() {
       document.getElementById('passwordContainer').style.display = 'block';
       document.querySelector('.secret-btn').style.display = 'none';
@@ -220,7 +223,6 @@
       mensagem.style.display = 'block';
     }
 
-    // Corações caindo
     function criarCoracao() {
       const heart = document.createElement('div');
       heart.classList.add('falling-heart');
@@ -234,7 +236,6 @@
       }, 6000);
     }
 
-    // Iniciar tudo quando a página carregar
     window.onload = function() {
       iniciarCarrossel();
       setInterval(criarCoracao, 300);
