@@ -41,6 +41,7 @@
       border-radius: 20px;
       display: inline-block;
       max-width: 600px;
+      width: 100%;
       box-shadow: 0 0 15px rgba(255, 0, 128, 0.3);
       position: relative;
       z-index: 2;
@@ -48,52 +49,28 @@
 
     .carrossel {
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 100%;
+      max-width: 500px;
       height: 300px;
       margin: 20px auto;
       overflow: hidden;
       border-radius: 15px;
+      background-color: #fff;
     }
 
     .carrossel img {
-      position: absolute;
+      display: none;
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 15px;
-      transition: opacity 1s ease-in-out;
-      opacity: 0;
     }
 
     .carrossel img.ativa {
-      opacity: 1;
-    }
-
-    .carrossel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(255, 102, 163, 0.7);
-      color: white;
-      border: none;
-      font-size: 2em;
-      padding: 10px;
-      cursor: pointer;
-      z-index: 2;
-      border-radius: 50%;
-      transition: background-color 0.3s;
-    }
-
-    .carrossel-btn:hover {
-      background-color: #e60073;
-    }
-
-    .carrossel-btn.esquerda {
-      left: 10px;
-    }
-
-    .carrossel-btn.direita {
-      right: 10px;
+      display: block;
     }
 
     .secret-btn {
@@ -153,6 +130,7 @@
       color: #cc0066;
     }
 
+    /* Corações caindo */
     .falling-heart {
       position: fixed;
       top: -50px;
@@ -174,54 +152,46 @@
     <h1>Feliz Dia dos Namorados!</h1>
     <p>Meu amor, obrigado por fazer minha vida mais doce, mais leve e cheia de sentido.</p>
     <p>Te amo hoje, amanhã e para sempre.</p>
-
-    <!-- Carrossel de imagens com setas -->
+    
+    <!-- Carrossel de imagens -->
     <div class="carrossel">
-      <button class="carrossel-btn esquerda" onclick="mudarImagem(-1)">❮</button>
       <img src="nós-dois.JPG" alt="Nós dois" class="ativa">
       <img src="foto2.jpg" alt="Nossa foto 2">
       <img src="foto3.jpg" alt="Nossa foto 3">
       <img src="foto4.jpg" alt="Nossa foto 4">
       <img src="foto5.jpg" alt="Nossa foto 5">
       <img src="foto6.jpg" alt="Nossa foto 6">
-      <button class="carrossel-btn direita" onclick="mudarImagem(1)">❯</button>
     </div>
-
+    
     <p><em>Feito com todo meu carinho,</em><br><strong>Sophia</strong></p>
 
     <button class="secret-btn" onclick="mostrarCampoSenha()">Clique aqui!</button>
-
+    
     <div class="password-container" id="passwordContainer">
       <input type="password" class="password-input" id="passwordInput" placeholder="Digite a senha" maxlength="4">
       <button class="submit-btn" onclick="verificarSenha()">OK</button>
       <div class="password-hint">Dica: Nossa data especial.</div>
     </div>
-
+    
     <div class="secret-message" id="mensagemSegredo">
       Amar-te foi minha heresia… e minha penitência. - Blasphemous.<br>
     </div>
   </div>
 
   <script>
-    let indexAtual = 0;
-    let intervalo;
-
+    // Carrossel de imagens
     function iniciarCarrossel() {
-      intervalo = setInterval(() => {
-        mudarImagem(1);
-      }, 5000);
-    }
-
-    function mudarImagem(direcao) {
       const imagens = document.querySelectorAll('.carrossel img');
-      imagens[indexAtual].classList.remove('ativa');
-      indexAtual = (indexAtual + direcao + imagens.length) % imagens.length;
-      imagens[indexAtual].classList.add('ativa');
+      let indexAtual = 0;
 
-      clearInterval(intervalo);
-      iniciarCarrossel();
+      setInterval(() => {
+        imagens[indexAtual].classList.remove('ativa');
+        indexAtual = (indexAtual + 1) % imagens.length;
+        imagens[indexAtual].classList.add('ativa');
+      }, 5000); // Muda a cada 5 segundos
     }
 
+    // Senha secreta
     function mostrarCampoSenha() {
       document.getElementById('passwordContainer').style.display = 'block';
       document.querySelector('.secret-btn').style.display = 'none';
@@ -245,6 +215,7 @@
       mensagem.style.display = 'block';
     }
 
+    // Corações caindo
     function criarCoracao() {
       const heart = document.createElement('div');
       heart.classList.add('falling-heart');
@@ -258,7 +229,8 @@
       }, 6000);
     }
 
-    window.onload = function () {
+    // Iniciar tudo quando a página carregar
+    window.onload = function() {
       iniciarCarrossel();
       setInterval(criarCoracao, 300);
     };
