@@ -1,5 +1,4 @@
 
-
 # 🔍 Verificador de Duplicatas
 
 Este projeto, desenvolvido em linguagem C, tem como objetivo verificar duplicatas em uma lista de strings inseridas manualmente ou importadas de um arquivo `.csv`. A aplicação utiliza três abordagens distintas para comparação e mostra os tempos de execução de cada uma.
@@ -147,6 +146,12 @@ Resultados obtidos com base em entradas reais:
 
 ## 👤 Autor
 
-- **Nomes:** Sophia Hellen, Antonio Andson e Levi Filgueira
-- **GitHub:** [https://github.com/Sophiahellen02](https://github.com/Sophiahellen02)
+- **Nomes:** 
+      - Sophia Hellen
+      - Antonio Andson
+      -Levi Filgueira
+- **GitHub:** 
+      - [https://github.com/Sophiahellen02](https://github.com/Sophiahellen02)
+      - [https://github.com/Sophiahellen02](https://github.com/Sophiahellen02)
+      - [https://github.com/Sophiahellen02](https://github.com/Sophiahellen02)
 ---
