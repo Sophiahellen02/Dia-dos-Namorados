@@ -89,8 +89,8 @@ Resultados obtidos com base em entradas reais:
 |           10000            |         0.014000000           |
 
 
-|                     **Busca Linear**                       |
-|------------------------------------------------------------|
+### Busca Linear                       
+
 |   Quantidade de entradas   |  Tempo de Execução (segundos) |
 |----------------------------|-------------------------------|
 |            2000            |         0.137000000           |
